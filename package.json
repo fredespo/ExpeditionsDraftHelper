@@ -1,0 +1,25 @@
+{
+  "name": "expeditionsdrafthelper",
+  "version": "1.0.0",
+  "description": "Entry for Legends of Runeterra Developer Challenge 2019. This application provides users with information and advice for the Expedtitions Draft mode.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fredespo/ExpeditionsDraftHelper.git"
+  },
+  "author": "FPFX",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fredespo/ExpeditionsDraftHelper/issues"
+  },
+  "homepage": "https://github.com/fredespo/ExpeditionsDraftHelper#readme",
+  "devDependencies": {
+    "electron": "^7.1.1",
+    "electron-packager": "^14.1.0",
+    "frameless-titlebar": "^1.0.8"
+  },
+  "dependencies": {}
+}
