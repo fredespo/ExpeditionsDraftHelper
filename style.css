@@ -58,6 +58,7 @@ body {
 
 #titlebar {
   color: #FFF;
+  background: rgb(44, 54, 61);
 }
 
 #titlebar #drag-region {
