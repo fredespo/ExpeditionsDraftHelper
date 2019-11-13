@@ -13,22 +13,33 @@ document.onreadystatechange = () => {
 function handleWindowControls() {
 
     let win = remote.getCurrentWindow();
-    // Make minimise/maximise/restore/close buttons work when they are clicked
-    document.getElementById('min-button').addEventListener("click", event => {
-        win.minimize();
-    });
 
-    document.getElementById('max-button').addEventListener("click", event => {
-        win.maximize();
-    });
+    if (process.platform == 'darwin') {
+        //remove window controls (traffic light controls will be shown instead)
+        var windowControls = document.getElementById('window-controls');
+        windowControls.parentNode.removeChild(windowControls);
 
-    document.getElementById('restore-button').addEventListener("click", event => {
-        win.unmaximize();
-    });
+        //move title
+        document.getElementById("window-title").style.paddingLeft = "58px";
+    }
+    else {
+        // Make minimise/maximise/restore/close buttons work when they are clicked
+        document.getElementById('min-button').addEventListener("click", event => {
+            win.minimize();
+        });
 
-    document.getElementById('close-button').addEventListener("click", event => {
-        win.close();
-    });
+        document.getElementById('max-button').addEventListener("click", event => {
+            win.maximize();
+        });
+
+        document.getElementById('restore-button').addEventListener("click", event => {
+            win.unmaximize();
+        });
+
+        document.getElementById('close-button').addEventListener("click", event => {
+            win.close();
+        });
+    }
 
     // Toggle maximise/restore buttons when maximisation/unmaximisation occurs
     toggleMaxRestoreButtons();

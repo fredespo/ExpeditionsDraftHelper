@@ -11,6 +11,7 @@ function createWindow () {
         width: 400,
         height: 300,
         frame: false,
+        titleBarStyle: 'hidden',
         backgroundColor: '#FFF',
         webPreferences: {
             nodeIntegration: true
