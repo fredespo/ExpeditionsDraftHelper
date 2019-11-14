@@ -4,6 +4,7 @@ const {app, BrowserWindow} = require('electron');
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
+let overlayWindow;
 
 function createWindow () {
     // Create the browser window.
@@ -11,12 +12,16 @@ function createWindow () {
         width: 400,
         height: 300,
         frame: false,
+        transparent: true,
         titleBarStyle: 'hidden',
         backgroundColor: '#FFF',
         webPreferences: {
             nodeIntegration: true
         }
     });
+
+    createOverlay();
+    
 
     // and load the index.html of the app.
     mainWindow.loadFile('index.html');
@@ -30,7 +35,31 @@ function createWindow () {
         // in an array if your app supports multi windows, this is the time
         // when you should delete the corresponding element.
         mainWindow = null;
+        overlayWindow.close();
+        overlayWindow = null;
     });
+}
+
+function createOverlay() {
+    // Create the overlay window.
+    overlayWindow = new BrowserWindow({
+        width: 800,
+        height: 600,
+        frame: false,
+        fullscreen: true,
+        transparent: true,
+        alwaysOnTop: true,
+        parent: mainWindow,
+
+        webPreferences: {
+            nodeIntegration: true
+        }
+    });
+    
+    overlayWindow.setSkipTaskbar(true);
+    overlayWindow.setIgnoreMouseEvents(true);
+    overlayWindow.loadFile('overlay.html');
+    overlayWindow.setOpacity(0);
 }
 
 // This method will be called when Electron has finished

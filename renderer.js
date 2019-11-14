@@ -41,6 +41,22 @@ function handleWindowControls() {
         });
     }
 
+    //add event listener for overlay display button
+    document.getElementById('overlayDisp-button').addEventListener("click", event => {
+        var overlayDispBtn = document.getElementById('overlayDisp-button');
+        var overlayWindow = win.getChildWindows()[0];
+        if(overlayDispBtn.textContent == "Show Overlay"){
+            overlayDispBtn.textContent = "Hide Overlay";
+            overlayWindow.setOpacity(1);
+            win.focus();
+        }
+        else {
+            overlayDispBtn.textContent = "Show Overlay";
+            overlayWindow.setOpacity(0);
+            win.focus();
+        }
+    })
+
     // Toggle maximise/restore buttons when maximisation/unmaximisation occurs
     toggleMaxRestoreButtons();
     win.on('maximize', toggleMaxRestoreButtons);
