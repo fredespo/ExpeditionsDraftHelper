@@ -4,7 +4,8 @@
   "description": "Entry for Legends of Runeterra Developer Challenge 2019. This application provides users with information and advice for the Expedtitions Draft mode.",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "compilecpp": "npm install && \"node_modules/.bin/electron-rebuild.cmd\""
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,9 @@
   "devDependencies": {
     "electron": "^7.1.1",
     "electron-packager": "^14.1.0",
-    "frameless-titlebar": "^1.0.8"
+    "electron-rebuild": "^1.8.6",
+    "frameless-titlebar": "^1.0.8",
+    "node-gyp": "^6.0.1"
   },
   "dependencies": {}
 }

@@ -1,6 +1,14 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron');
 
+//import cpp code
+const addon = require('./build/Release/addon');
+
+//print top window title 5 seconds
+setInterval(function(){ 
+    addon.gettopwindow();
+}, 5000);
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
