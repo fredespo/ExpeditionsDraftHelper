@@ -44,7 +44,7 @@ function handleWindowControls() {
     //add event listener for overlay display button
     document.getElementById('overlayDisp-button').addEventListener("click", event => {
         var overlayDispBtn = document.getElementById('overlayDisp-button');
-        var overlayWindow = win.getChildWindows()[0];
+        var overlayWindow = win.webContents.browserWindowOptions.overlay;
         if(overlayDispBtn.textContent == "Show Overlay"){
             overlayDispBtn.textContent = "Hide Overlay";
             overlayWindow.setOpacity(1);

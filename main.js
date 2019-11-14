@@ -7,6 +7,9 @@ let mainWindow;
 let overlayWindow;
 
 function createWindow () {
+
+    createOverlay();
+
     // Create the browser window.
     mainWindow = new BrowserWindow({
         width: 400,
@@ -15,13 +18,11 @@ function createWindow () {
         transparent: true,
         titleBarStyle: 'hidden',
         backgroundColor: '#FFF',
+        overlay: overlayWindow,
         webPreferences: {
             nodeIntegration: true
         }
     });
-
-    createOverlay();
-    
 
     // and load the index.html of the app.
     mainWindow.loadFile('index.html');
