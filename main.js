@@ -50,7 +50,6 @@ function createOverlay() {
         fullscreen: true,
         transparent: true,
         alwaysOnTop: true,
-        parent: mainWindow,
 
         webPreferences: {
             nodeIntegration: true
