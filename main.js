@@ -1,13 +1,14 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron');
-
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 //import cpp code
 const addon = require('./build/Release/addon');
 
+const endpoints = require('./Endpoints.js');
 //print top window title 5 seconds
 setInterval(function(){ 
-    addon.gettopwindow();
-}, 5000);
+    getExpeditionsState();
+}, 10000);
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -94,3 +95,64 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+class CardRect {
+    constructor(CardID, CardCode, TopLeftX, TopLeftY, Width, Height, LocalPlayer){
+        this.CardID = CardID;
+        this.CardCode = CardCode;
+        this.TopLeftX = TopLeftX;
+        this.TopLeftY = TopLeftY;
+        this.Width = Width;
+        this.Height = Height;
+        this.LocalPlayer = LocalPlayer;
+    }
+}
+
+function getPositionalRectangles(){
+    var request = new XMLHttpRequest();
+    var call = 'http://localhost:' + 21337 + '/positional-rectangles';
+    console.log(call);
+    request.open('GET', call, true);
+    request.onload = function() {
+        console.log(request.status);
+        var res = request.responseText;
+        var json = JSON.parse(res);
+        var gameState = json.GameState;
+        console.log(gameState);
+
+        var rectangles = json.Rectangles;
+        Object.values(rectangles).forEach(rect=>{
+            var cardID = rect.CardID;
+            var cardCode = rect.CardCode;
+            var x = rect.TopLeftX;
+            var y = rect.TopLeftY;
+            console.log('cardCode= ' + cardCode);
+            console.log('x= ' + x);
+            console.log('y= ' + y);
+            //call function to create overlay at these points
+            //use cardcode and x/y coordinates to position
+        });
+    }
+    request.send();
+}
+
+function getExpeditionsState(){
+    var request = new XMLHttpRequest();
+    var call = 'http://localhost:' + 21337 + '/expeditions-state';
+    console.log(call);
+    request.open('GET', call, true);
+    request.onload = function() {
+        console.log(request.status);
+        var res = request.responseText;
+        var json = JSON.parse(res);
+        var isActive = json.IsActive;
+        var state = json.State;
+        console.log(json);
+        console.log('state: ' + state);
+        console.log('isActive: ' + isActive);
+        if (isActive == true && state == 'Picking'){
+            getPositionalRectangles();
+        }
+    }
+    request.send();
+}
