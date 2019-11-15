@@ -45,8 +45,6 @@ function createWindow () {
 function createOverlay() {
     // Create the overlay window.
     overlayWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
         frame: false,
         fullscreen: true,
         transparent: true,
@@ -67,6 +65,9 @@ function createOverlay() {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', createWindow);
+
+app.commandLine.appendSwitch('high-dpi-support', 'true');
+app.commandLine.appendSwitch('force-device-scale-factor', '1');
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {

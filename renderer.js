@@ -12,20 +12,29 @@ var win = remote.getCurrentWindow();
 var overlayWindow = win.webContents.browserWindowOptions.overlay;
 var overlayWindowEnabled = false;
 
-function getTopWindow() {
+function getTopWindowInfo() {
     addon.gettopwindow();
-    return fs.readFileSync('topWindow.txt').toString();
+    return fs.readFileSync('topWindow.txt').toString().split("\n");
 }
 
 //print top window title 5 seconds
-setInterval(function(){ 
-    if(overlayWindowEnabled && getTopWindow() == "Legends of Runeterra") {
-        overlayWindow.setOpacity(1);
+setInterval(function(){
+    var topWindowInfo;
+    if(overlayWindowEnabled) {
+        topWindowInfo = getTopWindowInfo();
+        if(topWindowInfo[0].includes("Legends of Runeterra")) {
+            overlayWindow.setOpacity(1);
+            overlayWindow.setPosition(parseInt(topWindowInfo[1]), parseInt(topWindowInfo[2]));
+            overlayWindow.setSize(parseInt(topWindowInfo[3]), parseInt(topWindowInfo[4]));
+        }
+        else {
+            overlayWindow.setOpacity(0);
+        }
     }
     else {
         overlayWindow.setOpacity(0);
     }
-}, 1000);
+}, 2000);
 
 // When document has loaded, initialise
 document.onreadystatechange = () => {

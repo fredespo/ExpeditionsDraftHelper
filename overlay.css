@@ -2,6 +2,7 @@ h1 {
   margin: 0 0 10px 0;
   font-weight: 600;
   line-height: 1.2;
-  color: rgb(255, 255, 255);
+  color: rgb(255, 0, 0);
   text-align: center;
+  font-size:2vw;
 }
