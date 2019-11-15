@@ -2,6 +2,7 @@
 #include <iostream>
 #include <windows.h>
 #include <string>
+#include <fstream>
 
 using namespace v8;
 using namespace std;
@@ -16,7 +17,10 @@ string GetActiveWindowTitle()
 }
 
 void GetTopWindow(const FunctionCallbackInfo<Value>& args) {
-   cout << "Top level window: " << GetActiveWindowTitle() << endl;
+   ofstream myfile;
+   myfile.open ("topWindow.txt");
+   myfile << GetActiveWindowTitle();
+   myfile.close();
 }
 
 void Initialize(Local<Object> exports) {

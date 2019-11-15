@@ -169,3 +169,7 @@ body {
 #overlayDisp-button:hover {
   background-color: rgb(120, 145, 175);
 }
+
+#status {
+  color: rgb(255, 255, 255);
+}

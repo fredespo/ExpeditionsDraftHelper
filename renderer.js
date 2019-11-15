@@ -3,6 +3,30 @@
 // All of the Node.js APIs are available in this process.
 const remote = require('electron').remote;
 
+var fs = require('fs');
+
+//import cpp code
+const addon = require('./build/Release/addon');
+
+var win = remote.getCurrentWindow();
+var overlayWindow = win.webContents.browserWindowOptions.overlay;
+var overlayWindowEnabled = false;
+
+function getTopWindow() {
+    addon.gettopwindow();
+    return fs.readFileSync('topWindow.txt').toString();
+}
+
+//print top window title 5 seconds
+setInterval(function(){ 
+    if(overlayWindowEnabled && getTopWindow() == "Legends of Runeterra") {
+        overlayWindow.setOpacity(1);
+    }
+    else {
+        overlayWindow.setOpacity(0);
+    }
+}, 1000);
+
 // When document has loaded, initialise
 document.onreadystatechange = () => {
     if (document.readyState == "complete") {
@@ -11,8 +35,6 @@ document.onreadystatechange = () => {
 };
 
 function handleWindowControls() {
-
-    let win = remote.getCurrentWindow();
 
     if (process.platform == 'darwin') {
         //remove window controls (traffic light controls will be shown instead)
@@ -44,16 +66,17 @@ function handleWindowControls() {
     //add event listener for overlay display button
     document.getElementById('overlayDisp-button').addEventListener("click", event => {
         var overlayDispBtn = document.getElementById('overlayDisp-button');
-        var overlayWindow = win.webContents.browserWindowOptions.overlay;
-        if(overlayDispBtn.textContent == "Show Overlay"){
-            overlayDispBtn.textContent = "Hide Overlay";
-            overlayWindow.setOpacity(1);
-            win.focus();
+        var status = document.getElementById('status');
+    
+        if(overlayDispBtn.textContent == "Enable Overlay"){
+            overlayDispBtn.textContent = "Disable Overlay";
+            status.innerHTML = "Overlay enabled.<br>It will be displayed in Legends of Runeterra.";
+            overlayWindowEnabled = true;
         }
         else {
-            overlayDispBtn.textContent = "Show Overlay";
-            overlayWindow.setOpacity(0);
-            win.focus();
+            overlayDispBtn.textContent = "Enable Overlay";
+            status.innerHTML = "Overlay disabled.";
+            overlayWindowEnabled = false;
         }
     })
 
