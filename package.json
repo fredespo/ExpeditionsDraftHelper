@@ -24,5 +24,7 @@
     "frameless-titlebar": "^1.0.8",
     "node-gyp": "^6.0.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "xmlhttprequest": "^1.8.0"
+  }
 }
