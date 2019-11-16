@@ -34,15 +34,7 @@ function getPositionalRectangles(cardCache){
 }
 
 function displayCardValue(cardValue, x, y){
-    logger.log('attempting to display card value and position');
-    var htmlStr = '<h2 class="card" style="top:';
-    htmlStr += x;
-    htmlStr += ';left:';
-    htmlStr += y;
-    htmlStr += '">';
-    htmlStr += cardValue;
-    htmlStr += '</h2>';
-    document.body.innerHTML = htmlStr;
+
 }
 function findCardValue(cardCode, cardCache){
     logger.log('trying to find card value');
@@ -62,17 +54,17 @@ function findCardValue(cardCode, cardCache){
 function getExpeditionsState(cardCache){
     var request = new XMLHttpRequest();
     var call = 'http://localhost:' + 21337 + '/expeditions-state';
-    console.log(call);
+    logger.log(call);
     request.open('GET', call, true);
     request.onload = function() {
-        console.log(request.status);
+        logger.log(request.status);
         var res = request.responseText;
         var json = JSON.parse(res);
         var isActive = json.IsActive;
         var state = json.State;
-        console.log(json);
-        console.log('state: ' + state);
-        console.log('isActive: ' + isActive);
+        logger.log(json);
+        logger.log('state: ' + state);
+        logger.log('isActive: ' + isActive);
         if (isActive == true && state == 'Picking'){
             getPositionalRectangles(cardCache);
         }

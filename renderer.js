@@ -20,6 +20,7 @@ function getTopWindowInfo() {
 var jsonDataDragon = require('./set1-en_us.json');
 var cardCache = {};
 jsonDataDragon.forEach(card => cardCache[card.cardCode] = card);
+logger.log('created card cache');
 
 //print top window title 5 seconds
 setInterval(function(){
