@@ -3,6 +3,7 @@
 // All of the Node.js APIs are available in this process.
 const remote = require('electron').remote;
 var fs = require('fs');
+const logger = require('electron-log');
 
 //import cpp code
 const addon = require('./build/Release/addon');
@@ -16,18 +17,21 @@ function getTopWindowInfo() {
     return fs.readFileSync('topWindow.txt').toString().split("\n");
 }
 
+var jsonDataDragon = require('./set1-en_us.json');
+var cardCache = {};
+jsonDataDragon.forEach(card => cardCache[card.cardCode] = card);
+
 //print top window title 5 seconds
 setInterval(function(){
     var topWindowInfo;
-    console.log('here');
     if(overlayWindowEnabled) {
         topWindowInfo = getTopWindowInfo();
         if(topWindowInfo[0].includes("Legends of Runeterra")) {
             overlayWindow.setOpacity(1);
             overlayWindow.setPosition(parseInt(topWindowInfo[1]), parseInt(topWindowInfo[2]));
             overlayWindow.setSize(parseInt(topWindowInfo[3]), parseInt(topWindowInfo[4]));
-            console.log('getting expedition state');
-            getExpeditionsState();
+            logger.log('getting expedition state');
+            getExpeditionsState(cardCache);
         }
         else {
             overlayWindow.setOpacity(0);
