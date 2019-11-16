@@ -3,6 +3,7 @@
 // All of the Node.js APIs are available in this process.
 const remote = require('electron').remote;
 var win = remote.getCurrentWindow();
+const logger = require('electron-log');
 
 // When document has loaded, initialise
 document.onreadystatechange = () => {
@@ -12,6 +13,8 @@ document.onreadystatechange = () => {
 };
 
 function handleWindowControls() {
+
+    updateStorage('overlayEnabled', false);
 
     if (process.platform == 'darwin') {
         //remove window controls (traffic light controls will be shown instead)
@@ -48,10 +51,12 @@ function handleWindowControls() {
         if(overlayDispBtn.textContent == "Enable Overlay"){
             overlayDispBtn.textContent = "Disable Overlay";
             status.innerHTML = "Overlay enabled.<br>It will be displayed in Legends of Runeterra.";
+            updateStorage('overlayEnabled', true);
         }
         else {
             overlayDispBtn.textContent = "Enable Overlay";
             status.innerHTML = "Overlay disabled.";
+            updateStorage('overlayEnabled', false);
         }
     })
 
@@ -66,6 +71,11 @@ function handleWindowControls() {
         } else {
             document.body.classList.remove('maximized');
         }
+    }
+
+
+    function updateStorage(key, value){
+        localStorage.setItem(key, value);
     }
 }
 

@@ -4,7 +4,6 @@ const addon = require('./build/Release/addon');
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const logger = require('electron-log');
 var overlayWindow = remote.getCurrentWindow();
-var overlayWindowEnabled = true;
 var jsonDataDragon = require('./set1-en_us.json');
 var cardCache = {};
 
@@ -29,7 +28,10 @@ function createCardCache() {
 function runOverlayWindow() {
     setInterval(function(){
         var topWindowInfo;
-        if(overlayWindowEnabled) {
+        var  overlayEnabled = localStorage.getItem('overlayEnabled');
+
+        if(overlayEnabled != null && overlayEnabled == 'true') {
+            logger.log('overlay is enabled');
             topWindowInfo = getTopWindowInfo();
             if(topWindowInfo[0].includes("Legends of Runeterra")) {
                 overlayWindow.setOpacity(1);
@@ -43,6 +45,7 @@ function runOverlayWindow() {
             }
         }
         else {
+            logger.log('overlay is not enabled dont show overlay');
             overlayWindow.setOpacity(0);
         }
     }, 1000);
@@ -127,6 +130,9 @@ function getExpeditionsState(cardCache){
         logger.log('isActive: ' + isActive);
         if (isActive == true && state == 'Picking'){
             getPositionalRectangles(cardCache);
+        }
+        else {
+            eraseCardValues();
         }
     }
     request.send();
