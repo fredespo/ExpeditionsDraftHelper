@@ -96,7 +96,8 @@ function findCardValue(cardCode, cardCache){
     var atk = card.attack;
     var hp = card.health;
     var manaCost = card.cost;
-    var cardValue = atk + hp - manaCost;
+    var cardValue = (atk + hp) / manaCost;
+    cardValue = Math.round(cardValue * 10);
     logger.log(card.name + ' value is ' + (cardValue))
     return cardValue;
 }
