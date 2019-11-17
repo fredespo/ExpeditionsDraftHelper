@@ -11,8 +11,12 @@ function getDirectDamageStatValue(card) {
             damageStatValue = dmgStats.amount * getNumTargets(dmgStats.target);
         }
 
-        if(isAllyTarget(dmgStats.target)) {
+        var targetAlignment = getTargetAlignment(dmgStats.target);
+        if(targetAlignment == "ally") {
             damageStatValue *= -1;
+        }
+        else if(targetAlignment == "neutral") {
+            damageStatValue /= 2; //TODO: confirm, neutral cards (deal dmg to both enemies and allies) are half as valuable for their damage than just those that target enemies?
         }
     }
     else {
@@ -38,16 +42,25 @@ function isSingleTarget(damageTarget) {
     return startsWithOneOf(damageTarget, singleTargetWords);
 }
 
-function isAllyTarget(damageTarget) {
+function getTargetAlignment(damageTarget) {
     if(damageTarget.startsWith("your")) {
-        return true;
+        return "ally";
     }
     else {
         var regex = /\w+ (.*)/;
         var matches = regex.exec(damageTarget);
-        if(matches == null) return false;
+        if(matches == null) return "neutral";
         var allyWords = ["ally", "allied"];
-        return startsWithOneOf(matches[1], allyWords);
+        if(startsWithOneOf(matches[1], allyWords)) {
+            return "ally";
+        }
+
+        var enemyWords = ["enemy", "enemies"];
+        if(startsWithOneOf(matches[1], enemyWords)) {
+            return "enemy";
+        }
+
+        return "neutral";
     }
 }
 

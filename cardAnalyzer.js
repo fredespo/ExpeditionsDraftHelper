@@ -9,7 +9,7 @@ function setBaseValueIfNotSet(card) {
 }
 
 function calcBaseValue(card) {
-    logger.log("Calculating base value for " + card.name + ", description: " + card.descriptionRaw);
+    logger.log("Calculating base value for " + card.name + ", cost: " + card.cost + ", description: " + card.descriptionRaw);
     var totalStatValue = 0;
     totalStatValue += card.attack;
     totalStatValue += card.health;
