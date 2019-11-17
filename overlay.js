@@ -4,6 +4,7 @@ var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const logger = require('electron-log');
 var overlayWindow = remote.getCurrentWindow();
 var jsonDataDragon = require('./set1-en_us.json');
+let cardAnalyzer = require("./cardAnalyzer.js");
 var cardCache = {};
 var lorWindow = {
     xPos:0,
@@ -93,13 +94,8 @@ function findCardValue(cardCode, cardCache){
     card = cardCache[cardCode];
     
     logger.log(card.name);
-    var atk = card.attack;
-    var hp = card.health;
-    var manaCost = card.cost;
-    var cardValue = (atk + hp) / manaCost;
-    cardValue = Math.round(cardValue * 10);
-    logger.log(card.name + ' value is ' + (cardValue))
-    return cardValue;
+    cardAnalyzer.setBaseValueIfNotSet(card);
+    return card.baseValue;
 }
 
 
