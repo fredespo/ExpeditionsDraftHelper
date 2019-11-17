@@ -54,11 +54,12 @@ function getPositionalRectangles(cardCache){
 
         var rectangles = json.Rectangles;
         eraseCardValues();
+        var overlayHeight = overlayWindow.getBounds().height;
         Object.values(rectangles).forEach(rect=>{
             var cardID = rect.CardID;
             var cardCode = rect.CardCode;
             var x = rect.TopLeftX;
-            var y = overlayWindow.getBounds().height - rect.TopLeftY;
+            var y = overlayHeight - rect.TopLeftY;
             logger.log('cardCode= ' + cardCode);
             logger.log('x= ' + x);
             logger.log('y= ' + y);
