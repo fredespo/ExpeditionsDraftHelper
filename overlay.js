@@ -28,7 +28,6 @@ function createCardCache() {
 function runOverlayWindow() {
     setInterval(function(){
         if(isOverlayEnabled() && isLorActive()) {
-            overlayWindow.setOpacity(1);
             overlayWindow.setPosition(lorWindow.xPos, lorWindow.yPos);
             overlayWindow.setSize(lorWindow.width, lorWindow.height);
             logger.log('getting expedition state');
@@ -120,9 +119,10 @@ function getExpeditionsState(cardCache){
         logger.log('isActive: ' + isActive);
         if (isActive == true && state == 'Picking'){
             getPositionalRectangles(cardCache);
+            overlayWindow.setOpacity(1);
         }
         else {
-            eraseCardValues();
+            overlayWindow.setOpacity(0);
         }
     }
     request.send();
