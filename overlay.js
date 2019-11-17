@@ -6,6 +6,12 @@ const logger = require('electron-log');
 var overlayWindow = remote.getCurrentWindow();
 var jsonDataDragon = require('./set1-en_us.json');
 var cardCache = {};
+var lorWindow = {
+    xPos:0,
+    yPos:0,
+    width:0,
+    height:0
+};
 
 // When document has loaded, initialise
 document.onreadystatechange = () => {
@@ -15,10 +21,6 @@ document.onreadystatechange = () => {
     }
 };
 
-function getTopWindowInfo() {
-    return windowInfo.getTopWindowInfo().split(";");
-}
-
 function createCardCache() {
     jsonDataDragon.forEach(card => cardCache[card.cardCode] = card);
     logger.log('created card cache');
@@ -26,25 +28,14 @@ function createCardCache() {
 
 function runOverlayWindow() {
     setInterval(function(){
-        var topWindowInfo;
-        var  overlayEnabled = localStorage.getItem('overlayEnabled');
-
-        if(overlayEnabled != null && overlayEnabled == 'true') {
-            logger.log('overlay is enabled');
-            topWindowInfo = getTopWindowInfo();
-            if(topWindowInfo[0].includes("Legends of Runeterra")) {
-                overlayWindow.setOpacity(1);
-                overlayWindow.setPosition(parseInt(topWindowInfo[1]), parseInt(topWindowInfo[2]));
-                overlayWindow.setSize(parseInt(topWindowInfo[3]), parseInt(topWindowInfo[4]));
-                logger.log('getting expedition state');
-                getExpeditionsState(cardCache);
-            }
-            else {
-                overlayWindow.setOpacity(0);
-            }
+        if(isOverlayEnabled() && isLorActive()) {
+            overlayWindow.setOpacity(1);
+            overlayWindow.setPosition(lorWindow.xPos, lorWindow.yPos);
+            overlayWindow.setSize(lorWindow.width, lorWindow.height);
+            logger.log('getting expedition state');
+            getExpeditionsState(cardCache);
         }
         else {
-            logger.log('overlay is not enabled dont show overlay');
             overlayWindow.setOpacity(0);
         }
     }, 1000);
@@ -135,4 +126,26 @@ function getExpeditionsState(cardCache){
         }
     }
     request.send();
+}
+
+function isOverlayEnabled() {
+    var overlayEnabled = localStorage.getItem('overlayEnabled');
+    logger.log("overlayEnabled = " + overlayEnabled);
+    return overlayEnabled == 'true';
+}
+
+function isLorActive() {
+    var topWindowInfo = windowInfo.getTopWindowInfo().split(";");
+    logger.log("topWindowInfo = " + topWindowInfo);
+    if(topWindowInfo[0] == "Legends of Runeterra") {
+        logger.log("LoR detected!");
+        lorWindow.xPos = parseInt(topWindowInfo[1]);
+        lorWindow.yPos = parseInt(topWindowInfo[2]);
+        lorWindow.width = parseInt(topWindowInfo[3]);
+        lorWindow.height = parseInt(topWindowInfo[4]);
+        return true;
+    }
+    else {
+        return false;
+    }
 }
