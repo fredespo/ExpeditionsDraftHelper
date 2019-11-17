@@ -5,7 +5,11 @@ function setBaseValueIfNotSet(card) {
 }
 
 function calcBaseValue(card) {
-    var baseValue = (card.attack + card.health) / (card.cost + 1);
+    var totalStatValue = 0;
+    totalStatValue += card.attack;
+    totalStatValue += card.health;
+
+    var baseValue = totalStatValue / (card.cost + 1);
     baseValue = Math.round(baseValue * 10);
     return baseValue;
 }
