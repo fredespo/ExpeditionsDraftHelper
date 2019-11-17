@@ -58,7 +58,7 @@ function getPositionalRectangles(cardCache){
             var cardID = rect.CardID;
             var cardCode = rect.CardCode;
             var x = rect.TopLeftX;
-            var y = rect.TopLeftY;
+            var y = overlayWindow.getBounds().height - rect.TopLeftY;
             logger.log('cardCode= ' + cardCode);
             logger.log('x= ' + x);
             logger.log('y= ' + y);
