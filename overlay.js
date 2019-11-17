@@ -1,5 +1,4 @@
 const remote = require('electron').remote;
-var fs = require('fs');
 var windowInfo = require('bindings')('getTopWindowInfo');
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const logger = require('electron-log');
