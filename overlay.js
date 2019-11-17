@@ -72,13 +72,13 @@ function getPositionalRectangles(cardCache){
 }
 
 function displayCardValue(cardValue, x, y){
-    var spanTag = document.createElement("span");
-    spanTag.innerHTML = cardValue;
-    spanTag.className = "cardvalue";
-    spanTag.style.position = "absolute";
-    spanTag.style.left = x + "px";
-    spanTag.style.top = y + "px";
-    document.body.appendChild(spanTag);
+    var cardValueDisp = document.createElement("span");
+    cardValueDisp.innerHTML = cardValue;
+    cardValueDisp.className = "cardvalue";
+    cardValueDisp.style.position = "absolute";
+    cardValueDisp.style.left = x + "px";
+    cardValueDisp.style.top = y + "px";
+    document.body.appendChild(cardValueDisp);
 }
 
 function eraseCardValues() {
