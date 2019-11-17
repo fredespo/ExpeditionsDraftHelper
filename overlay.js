@@ -1,6 +1,6 @@
 const remote = require('electron').remote;
 var fs = require('fs');
-const addon = require('./build/Release/addon');
+var windowInfo = require('bindings')('getTopWindowInfo');
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const logger = require('electron-log');
 var overlayWindow = remote.getCurrentWindow();
@@ -16,8 +16,7 @@ document.onreadystatechange = () => {
 };
 
 function getTopWindowInfo() {
-    addon.gettopwindow();
-    return fs.readFileSync('topWindow.txt').toString().split("\n");
+    return windowInfo.getTopWindowInfo().split(";");
 }
 
 function createCardCache() {
