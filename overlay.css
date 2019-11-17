@@ -15,3 +15,7 @@ h1 {
   color: rgb(215,228,240);
   font-family: 'Pathway Gothic One', sans-serif;
 }
+
+.backgroundIcon {
+  position: absolute;
+}

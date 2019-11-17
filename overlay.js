@@ -65,14 +65,26 @@ function getPositionalRectangles(cardCache){
             logger.log('y= ' + y);
             //call function to create overlay at these points
             //use cardcode and x/y coordinates to position
-            var cardValue = findCardValue(cardCode, cardCache);
-            displayCardValue(cardValue, x, y);
+            //remove if block to also show values on cards in deck
+            if (x > 300){
+                var cardValue = findCardValue(cardCode, cardCache);
+                displayCardValue(cardValue, x, y);
+            }
         });
     }
     request.send();
 }
 
 function displayCardValue(cardValue, x, y){
+    var icon = document.createElement("IMG");
+    icon.setAttribute("src","./res/background.png");
+    //icon.setAttribute(width, "40");
+    //icon.setAttribute(height, "40");
+    icon.style.position = "absolute";
+    icon.style.left = (x - 10) + "px";
+    icon.style.top = (y - 5) + "px";
+    document.body.appendChild(icon);
+
     var cardValueDisp = document.createElement("span");
     cardValueDisp.innerHTML = cardValue;
     cardValueDisp.className = "cardvalue";
