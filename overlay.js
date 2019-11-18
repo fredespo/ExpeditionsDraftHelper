@@ -6,6 +6,7 @@ var overlayWindow = remote.getCurrentWindow();
 var jsonDataDragon = require('./set1-en_us.json');
 let cardAnalyzer = require("./cardAnalyzer.js");
 var cardCache = {};
+var synergyMap;
 var lorWindow = {
     xPos:0,
     yPos:0,
@@ -23,6 +24,8 @@ document.onreadystatechange = () => {
 
 function createCardCache() {
     jsonDataDragon.forEach(card => cardCache[card.cardCode] = card);
+    synergyMap = {};
+    synergyMap.deckSize = 0;
     logger.log('created card cache');
 }
 
@@ -136,7 +139,7 @@ function getExpeditionsState(cardCache){
         logger.log('state: ' + state);
         logger.log('isActive: ' + isActive);
         if (isActive == true && (state == 'Picking' || state == 'Swapping')){
-            var synergyMap = getSynergyMap(cardCache, deck);
+            synergyMap = getSynergyMap(cardCache, deck);
             logger.log(synergyMap);
             getPositionalRectangles(cardCache, synergyMap);
             overlayWindow.setOpacity(1);
@@ -149,8 +152,8 @@ function getExpeditionsState(cardCache){
 }
 
 function getSynergyMap(cardCache, deck){
-    var synergyMap = {};
     logger.log('getting synergies for cards in deck');
+    if (deck.length == synergyMap.deckSize) return synergyMap;
     deck.forEach(card =>{
         var cardData = cardCache[card];
         var associatedCards = cardData.associatedCardRefs;
