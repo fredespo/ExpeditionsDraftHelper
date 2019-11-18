@@ -80,6 +80,7 @@ function displayCardValue(cardValue, x, y){
     icon.setAttribute("src","./res/background.png");
     //icon.setAttribute(width, "40");
     //icon.setAttribute(height, "40");
+    icon.className = "cardValue";
     icon.style.position = "absolute";
     icon.style.left = (x - 10) + "px";
     icon.style.top = (y - 5) + "px";
