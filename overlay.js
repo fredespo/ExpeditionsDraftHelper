@@ -132,12 +132,12 @@ function getExpeditionsState(cardCache){
         var isActive = json.IsActive;
         var state = json.State;
         var deck = json.Deck;
-        var synergyMap = getSynergyMap(cardCache, deck);
-        logger.log(synergyMap);
         logger.log(json);
         logger.log('state: ' + state);
         logger.log('isActive: ' + isActive);
         if (isActive == true && state == 'Picking'){
+            var synergyMap = getSynergyMap(cardCache, deck);
+            logger.log(synergyMap);
             getPositionalRectangles(cardCache, synergyMap);
             overlayWindow.setOpacity(1);
         }
