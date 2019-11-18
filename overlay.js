@@ -135,7 +135,7 @@ function getExpeditionsState(cardCache){
         logger.log(json);
         logger.log('state: ' + state);
         logger.log('isActive: ' + isActive);
-        if (isActive == true && state == 'Picking'){
+        if (isActive == true && (state == 'Picking' || state == 'Swapping')){
             var synergyMap = getSynergyMap(cardCache, deck);
             logger.log(synergyMap);
             getPositionalRectangles(cardCache, synergyMap);
