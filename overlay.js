@@ -40,7 +40,7 @@ function runOverlayWindow() {
     }, 1000);
 }
 
-function getPositionalRectangles(cardCache){
+function getPositionalRectangles(cardCache, synergyMap){
     var request = new XMLHttpRequest();
     var call = 'http://localhost:' + 21337 + '/positional-rectangles';
     logger.log(call);
@@ -63,6 +63,13 @@ function getPositionalRectangles(cardCache){
             logger.log('cardCode= ' + cardCode);
             logger.log('x= ' + x);
             logger.log('y= ' + y);
+            var synergyCount = 0;
+
+            if (synergyMap[cardCode] != null){
+                synergyCount = synergyMap[cardCode];
+            }
+
+            logger.log('synergyCount=' + synergyCount);
             //call function to create overlay at these points
             //use cardcode and x/y coordinates to position
             //remove if block to also show values on cards in deck
@@ -80,7 +87,7 @@ function displayCardValue(cardValue, x, y){
     icon.setAttribute("src","./res/background.png");
     //icon.setAttribute(width, "40");
     //icon.setAttribute(height, "40");
-    icon.className = "cardValue";
+    icon.className = "cardvalue";
     icon.style.position = "absolute";
     icon.style.left = (x - 10) + "px";
     icon.style.top = (y - 5) + "px";
@@ -124,11 +131,14 @@ function getExpeditionsState(cardCache){
         var json = JSON.parse(res);
         var isActive = json.IsActive;
         var state = json.State;
+        var deck = json.Deck;
+        var synergyMap = getSynergyMap(cardCache, deck);
+        logger.log(synergyMap);
         logger.log(json);
         logger.log('state: ' + state);
         logger.log('isActive: ' + isActive);
         if (isActive == true && state == 'Picking'){
-            getPositionalRectangles(cardCache);
+            getPositionalRectangles(cardCache, synergyMap);
             overlayWindow.setOpacity(1);
         }
         else {
@@ -136,6 +146,24 @@ function getExpeditionsState(cardCache){
         }
     }
     request.send();
+}
+
+function getSynergyMap(cardCache, deck){
+    var synergyMap = {};
+    logger.log('getting synergies for cards in deck');
+    deck.forEach(card =>{
+        var cardData = cardCache[card];
+        var associatedCards = cardData.associatedCardRefs;
+        associatedCards.forEach(associatedCard =>{
+            if (synergyMap[associatedCard] == null){
+                synergyMap[associatedCard] = 1;
+            }
+            else {
+                synergyMap[associatedCard]++;
+            }
+        });
+    });
+    return synergyMap;
 }
 
 function isOverlayEnabled() {
