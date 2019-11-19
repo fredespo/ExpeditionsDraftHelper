@@ -1,11 +1,13 @@
 {
   "name": "expeditionsdrafthelper",
+  "productName": "Expeditions Draft Helper App",
   "version": "1.0.0",
   "description": "Entry for Legends of Runeterra Developer Challenge 2019. This application provides users with information and advice for the Expedtitions Draft mode.",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "postinstall": "echo postinstall && \"node_modules/.bin/electron-rebuild.cmd\""
+    "postinstall": "echo postinstall && \"node_modules/.bin/electron-rebuild.cmd\"",
+    "package-win": "electron-packager . expeditions-draft-helper --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Expeditions Draft Helper\""
   },
   "repository": {
     "type": "git",
@@ -18,13 +20,13 @@
   },
   "homepage": "https://github.com/fredespo/ExpeditionsDraftHelper#readme",
   "devDependencies": {
+    "bindings": "~1.2.1",
     "electron": "^7.1.1",
     "electron-packager": "^14.1.0",
     "electron-rebuild": "^1.8.6",
     "frameless-titlebar": "^1.0.8",
-    "node-gyp": "^6.0.1",
-    "bindings": "~1.2.1",
-    "node-addon-api": "^1.0.0"
+    "node-addon-api": "^1.0.0",
+    "node-gyp": "^6.0.1"
   },
   "dependencies": {
     "electron-log": "^3.0.9",
