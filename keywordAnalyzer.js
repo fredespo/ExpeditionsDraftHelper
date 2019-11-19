@@ -9,7 +9,7 @@ var calcFunctionsByKeyword = {
     "Fearsome": function(card) {return card.health > 3? card.attack*0.8 : 1},
     "Elusive": function(card) {return card.attack * 0.5},
     "Challenger": function(card) {return card.attack * 0.5},
-    "Lifesteal": function(card) {return (card.attack + card.health)/2}
+    "Lifesteal": function(card) {return (card.attack*0.4 + card.health*0.6)}
 };
 
 function getKeywordsValue(card){
