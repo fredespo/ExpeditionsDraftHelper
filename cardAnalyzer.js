@@ -14,7 +14,7 @@ function calcBaseValue(card) {
     var totalStatValue = 0;
     totalStatValue += card.attack;
     totalStatValue += card.health;
-    totalStatValue += directDamageAnalyzer.getDirectDamageStatValue(card);
+    totalStatValue += parseInt(directDamageAnalyzer.getDirectDamageStatValue(card));
     if (cantBlockAnalyzer.getCantBlock(card)){
         totalStatValue /= 2;
     }
