@@ -6,7 +6,6 @@ var overlayWindow = remote.getCurrentWindow();
 var jsonDataDragon = require('./set1-en_us.json');
 let cardAnalyzer = require("./cardAnalyzer.js");
 var cardCache = {};
-var synergyMap;
 var lorWindow = {
     xPos:0,
     yPos:0,
@@ -24,8 +23,6 @@ document.onreadystatechange = () => {
 
 function createCardCache() {
     jsonDataDragon.forEach(card => cardCache[card.cardCode] = card);
-    synergyMap = {};
-    synergyMap.deckSize = 0;
     logger.log('created card cache');
 }
 
@@ -43,7 +40,7 @@ function runOverlayWindow() {
     }, 1000);
 }
 
-function getPositionalRectangles(cardCache, synergyMap){
+function getPositionalRectangles(cardCache){
     var request = new XMLHttpRequest();
     var call = 'http://localhost:' + 21337 + '/positional-rectangles';
     logger.log(call);
@@ -66,13 +63,7 @@ function getPositionalRectangles(cardCache, synergyMap){
             logger.log('cardCode= ' + cardCode);
             logger.log('x= ' + x);
             logger.log('y= ' + y);
-            var synergyCount = 0;
 
-            if (synergyMap[cardCode] != null){
-                synergyCount = synergyMap[cardCode];
-            }
-
-            logger.log('synergyCount=' + synergyCount);
             //call function to create overlay at these points
             //use cardcode and x/y coordinates to position
             //remove if block to also show values on cards in deck
@@ -139,9 +130,7 @@ function getExpeditionsState(cardCache){
         logger.log('state: ' + state);
         logger.log('isActive: ' + isActive);
         if (isActive == true && (state == 'Picking' || state == 'Swapping')){
-            synergyMap = getSynergyMap(cardCache, deck);
-            logger.log(synergyMap);
-            getPositionalRectangles(cardCache, synergyMap);
+            getPositionalRectangles(cardCache);
             overlayWindow.setOpacity(1);
         }
         else {
@@ -151,23 +140,6 @@ function getExpeditionsState(cardCache){
     request.send();
 }
 
-function getSynergyMap(cardCache, deck){
-    logger.log('getting synergies for cards in deck');
-    if (deck.length == synergyMap.deckSize) return synergyMap;
-    deck.forEach(card =>{
-        var cardData = cardCache[card];
-        var associatedCards = cardData.associatedCardRefs;
-        associatedCards.forEach(associatedCard =>{
-            if (synergyMap[associatedCard] == null){
-                synergyMap[associatedCard] = 1;
-            }
-            else {
-                synergyMap[associatedCard]++;
-            }
-        });
-    });
-    return synergyMap;
-}
 
 function isOverlayEnabled() {
     var overlayEnabled = localStorage.getItem('overlayEnabled');
