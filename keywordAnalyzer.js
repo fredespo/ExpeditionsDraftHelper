@@ -1,7 +1,7 @@
 const logger = require('electron-log');
 
 var calcFunctionsByKeyword = {
-    "cantblock": getCantBlockValue
+    "Can't Block": getCantBlockValue
 };
 
 function getKeywordsValue(card){
