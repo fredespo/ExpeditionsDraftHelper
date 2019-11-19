@@ -14,12 +14,11 @@ function calcBaseValue(card) {
     var totalStatValue = 0;
     totalStatValue += card.attack;
     totalStatValue += card.health;
-    totalStatValue += parseInt(directDamageAnalyzer.getDirectDamageStatValue(card));
     if (cantBlockAnalyzer.getCantBlock(card)){
         totalStatValue /= 2;
     }
+    totalStatValue += parseInt(directDamageAnalyzer.getDirectDamageStatValue(card));
 
-    
 
     var baseValue = totalStatValue / (card.cost + 1);
     baseValue = Math.round(baseValue * 10);
