@@ -1,6 +1,7 @@
 const logger = require('electron-log');
 
 let directDamageAnalyzer = require("./directDamageAnalyzer.js");
+let cantBlockAnalyzer = require("./cantBlockAnalyzer.js")
 
 function setBaseValueIfNotSet(card) {
     if(card.baseValue == undefined) {
@@ -14,6 +15,11 @@ function calcBaseValue(card) {
     totalStatValue += card.attack;
     totalStatValue += card.health;
     totalStatValue += directDamageAnalyzer.getDirectDamageStatValue(card);
+    if (cantBlockAnalyzer.getCantBlock(card)){
+        totalStatValue /= 2;
+    }
+
+    
 
     var baseValue = totalStatValue / (card.cost + 1);
     baseValue = Math.round(baseValue * 10);
