@@ -1,9 +1,11 @@
 const remote = require('electron').remote;
+var fs = require('fs');
 var windowInfo = require('bindings')('getTopWindowInfo');
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const logger = require('electron-log');
 var overlayWindow = remote.getCurrentWindow();
 var jsonDataDragon = require('./set1-en_us.json');
+var manualScores = require('./res/manualScores.json');
 let cardAnalyzer = require("./cardAnalyzer.js");
 var cardCache = {};
 var lorWindow = {
@@ -23,7 +25,11 @@ document.onreadystatechange = () => {
 
 function createCardCache() {
     jsonDataDragon.forEach(card => cardCache[card.cardCode] = card);
+    manualScores.forEach(scoredCard => cardCache[scoredCard.cardCode].baseValue = scoredCard.score);
     logger.log('created card cache');
+    //testing that the two cards were initialized with scores
+    //logger.log(cardCache['01FR004'].baseValue);
+    //logger.log(cardCache['01IO012T2'].baseValue);
 }
 
 function runOverlayWindow() {
