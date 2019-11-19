@@ -1,9 +1,9 @@
 const logger = require('electron-log');
 
 var calcFunctionsByKeyword = {
-    "Can't Block": getCantBlockValue,
-    "Quick Attack": getQuickAttackValue,
-    "Barrier": getBarrierValue
+    "Can't Block": function(card) {return -1 * (card.attack + card.health)/2},
+    "Quick Attack": function(card) {return card.attack},
+    "Barrier": function(card) {return 2}
 };
 
 function getKeywordsValue(card){
@@ -19,18 +19,6 @@ function getKeywordsValue(card){
         }
     });
     return keywordsValue; 
-}
-
-function getCantBlockValue(card) {
-    return (-1 * (card.attack + card.health)/2);
-}
-
-function getQuickAttackValue(card) {
-    return card.attack;
-}
-
-function getBarrierValue(card) {
-    return 2;
 }
 
 module.exports = {
