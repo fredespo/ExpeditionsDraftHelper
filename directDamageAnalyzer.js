@@ -1,7 +1,7 @@
 const logger = require('electron-log');
 
 function getDirectDamageStatValue(card) {
-    logger.log("Calculating direct damage value...");
+    //logger.log("Calculating direct damage value...");
     var damageStatValue;
     if(cardDealsDirectDamage(card)) {
         damageStatValue = getValueFromStats(getDamageStats(card), card);
@@ -10,7 +10,7 @@ function getDirectDamageStatValue(card) {
         damageStatValue = 0;
     }
 
-    logger.log("Direct damage stat value = " + damageStatValue);
+    //logger.log("Direct damage stat value = " + damageStatValue);
     return damageStatValue;
 }
 
@@ -39,7 +39,7 @@ function getDamageStats(card) {
     }
     
 
-    logger.log("dmgStats = {amount:" + dmgAmount + ", target: " + dmgTarget + ", condition: " + dmgCondition + "}");
+    //logger.log("dmgStats = {amount:" + dmgAmount + ", target: " + dmgTarget + ", condition: " + dmgCondition + "}");
     return {amount: dmgAmount, target: dmgTarget, condition: dmgCondition};
 }
 

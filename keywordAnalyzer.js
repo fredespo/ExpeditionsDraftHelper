@@ -16,7 +16,7 @@ var calcFunctionsByKeyword = {
 };
 
 function getKeywordsValue(card){
-    logger.log("getting keywords value");
+    //logger.log("getting keywords value");
     var keywordsValue = 0;
     var keywords = card.keywords;
     keywords.forEach(keyword => {
@@ -24,7 +24,7 @@ function getKeywordsValue(card){
             keywordsValue += parseFloat(calcFunctionsByKeyword[keyword](card));
         }
         else {
-            logger.log("Warning: Calc function for keyword '" + keyword + "' is not defined.");
+            //logger.log("Warning: Calc function for keyword '" + keyword + "' is not defined.");
         }
     });
     return keywordsValue; 
