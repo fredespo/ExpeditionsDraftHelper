@@ -12,19 +12,15 @@ var calcFunctionsByKeyword = {
     "Lifesteal": function(card) {return (card.attack*0.4 + card.health*0.6)},
     "Tough": function(card) {return card.health/3},
     "Double Attack": function(card) {return card.attack},
-    "Ephemeral": function(card) {return card.cost*0.3}
+    "Ephemeral": function(card) {return card.cost*-0.3}
 };
 
 function getKeywordsValue(card){
-    //logger.log("getting keywords value");
     var keywordsValue = 0;
     var keywords = card.keywords;
     keywords.forEach(keyword => {
         if(calcFunctionsByKeyword[keyword] != null) {
             keywordsValue += parseFloat(calcFunctionsByKeyword[keyword](card));
-        }
-        else {
-            //logger.log("Warning: Calc function for keyword '" + keyword + "' is not defined.");
         }
     });
     return keywordsValue; 

@@ -1,7 +1,6 @@
 const logger = require('electron-log');
 
 function getDirectDamageStatValue(card) {
-    //logger.log("Calculating direct damage value...");
     var damageStatValue;
     if(cardDealsDirectDamage(card)) {
         damageStatValue = getValueFromStats(getDamageStats(card), card);
@@ -10,7 +9,6 @@ function getDirectDamageStatValue(card) {
         damageStatValue = 0;
     }
 
-    //logger.log("Direct damage stat value = " + damageStatValue);
     return damageStatValue;
 }
 
@@ -38,8 +36,6 @@ function getDamageStats(card) {
         dmgCondition = matches[1];
     }
     
-
-    //logger.log("dmgStats = {amount:" + dmgAmount + ", target: " + dmgTarget + ", condition: " + dmgCondition + "}");
     return {amount: dmgAmount, target: dmgTarget, condition: dmgCondition};
 }
 
@@ -60,7 +56,7 @@ function getValueFromStats(dmgStats, card) {
         damageValue *= -1;
     }
     else if(targetAlignment == "neutral") {
-        damageValue /= 2; //TODO: confirm, neutral cards (deal dmg to both enemies and allies) are half as valuable for their damage than just those that target enemies?
+        damageValue /= 2;
     }
 
     damageValue += parseInt(getValueOfAdditionalTargets(dmgStats.target, damageValue, card));
@@ -81,8 +77,7 @@ function getNumTargets(damageTarget) {
         numTargets = 2;
     }
     else {
-        //at this point we are probably targeting all enemy or all ally units
-        numTargets = 3; //TODO: confirm this number / stratgey
+        numTargets = 3;
     }
 
     return numTargets;
