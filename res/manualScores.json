@@ -168,6 +168,321 @@
         "cardCode":"01PZ010",
         "name": "Mushroom Cloud",
         "score": "11"
+    },
+    {
+        "cardCode":"01IO001",
+        "name": "Ritual of Renewal",
+        "score": "10"
+    },
+    {
+        "cardCode":"01NX046T1",
+        "name": "Paralyzing Bite",
+        "score": "24"
+    },
+    {
+        "cardCode":"01PZ028",
+        "name": "Jury-Rig",
+        "score": "11"
+    },
+    {
+        "cardCode":"01PZ030T1",
+        "name": "Impersonate",
+        "score": "22"
+    },
+    {
+        "cardCode":"01NX020T2",
+        "name": "Draven's Whirling Death",
+        "score": "45"
+    },
+    {
+        "cardCode":"01IO024",
+        "name": "Dawn and Dusk",
+        "score": "18"
+    },
+    {
+        "cardCode":"01PZ046",
+        "name": "Counterfeit Copies",
+        "score": "11"
+    },
+    {
+        "cardCode":"01FR024T1",
+        "name": "Anivia's Harsh Winds",
+        "score": "22"
+    },
+    {
+        "cardCode":"01PZ005",
+        "name": "Hextech Transmogulator",
+        "score": "29"
+    },
+    {
+        "cardCode":"01DE012T2",
+        "name": "Garen's Judgment",
+        "score": "55"
+    },
+    {
+        "cardCode":"01SI003",
+        "name": "The Harrowing",
+        "score": "55"
+    },
+    {
+        "cardCode":"01SI045",
+        "name": "Absorb Soul",
+        "score": "8"
+    },
+    {
+        "cardCode":"01SI036",
+        "name": "Crawling Sensation",
+        "score": "12"
+    },
+    {
+        "cardCode":"01NX054",
+        "name": "Intimidating Roar",
+        "score": "22"
+    },
+    {
+        "cardCode":"01NX006T2",
+        "name": "Crimson Pact",
+        "score": "12"
+    },
+    {
+        "cardCode":"01FR030",
+        "name": "Brittle Steel",
+        "score": "22"
+    },
+    {
+        "cardCode":"01PZ001",
+        "name": "Rummage",
+        "score": "4"
+    },
+    {
+        "cardCode":"01PZ057",
+        "name": "Scrapdash Assembly",
+        "score": "17"
+    },
+    {
+        "cardCode":"01PZ056T3",
+        "name": "Heimerdinger's Progress Day!",
+        "score": "29"
+    },
+    {
+        "cardCode":"01DE033",
+        "name": "Remembrance",
+        "score": "26"
+    },
+    {
+        "cardCode":"01PZ027",
+        "name": "Thermogenic Beam",
+        "score": "39"
+    },
+    {
+        "cardCode":"01IO056T1",
+        "name": "Staggering Strikes",
+        "score": "25"
+    },
+    {
+        "cardCode":"01PZ014",
+        "name": "Unlicensed Innovation",
+        "score": "33"
+    },
+    {
+        "cardCode":"01DE047",
+        "name": "Succession",
+        "score": "25"
+    },
+    {
+        "cardCode":"01NX011",
+        "name": "Whirling Death",
+        "score": "45"
+    },
+    {
+        "cardCode":"01DE050",
+        "name": "Purify",
+        "score": "5"
+    },
+    {
+        "cardCode":"01DE050",
+        "name": "Accelerated Purrsuit",
+        "score": "6"
+    },
+    {
+        "cardCode":"01IO012",
+        "name": "Twin Disciplines",
+        "score": "28"
+    },
+    {
+        "cardCode":"01FR052T1",
+        "name": "Balesight",
+        "score": "55"
+    },
+    {
+        "cardCode":"01IO009T3",
+        "name": "Zed's Shadowshift",
+        "score": "34"
+    },
+    {
+        "cardCode":"01SI042T2",
+        "name": "Hecarim's Onslaught of Shadows",
+        "score": "23"
+    },
+    {
+        "cardCode":"01SI027",
+        "name": "Fresh Offerings",
+        "score": "15"
+    },
+    {
+        "cardCode":"01DE013",
+        "name": "Chain Vest",
+        "score": "17"
+    },
+    {
+        "cardCode":"01SI007",
+        "name": "Haunted Relic",
+        "score": "11"
+    },
+    {
+        "cardCode":"01SI054",
+        "name": "Grasp of the Undying",
+        "score": "30"
+    },
+    {
+        "cardCode":"01SI006",
+        "name": "Possession",
+        "score": "26"
+    },
+    {
+        "cardCode":"01FR023",
+        "name": "Warmother's Call",
+        "score": "30"
+    },
+    {
+        "cardCode":"01PZ033",
+        "name": "Purrsuit of Perfection",
+        "score": "4"
+    },
+    {
+        "cardCode":"01SI033T1",
+        "name": "Blade of Ledros",
+        "score": "12"
+    },
+    {
+        "cardCode":"01SI033T1",
+        "name": "Splinter Soul",
+        "score": "15"
+    },
+    {
+        "cardCode":"01IO015T2",
+        "name": "Yasuo's Steel Tempest",
+        "score": "18"
+    },
+    {
+        "cardCode":"01IO011",
+        "name": "Recall",
+        "score": "11"
+    },
+    {
+        "cardCode":"01IO002",
+        "name": "Will of Ionia",
+        "score": "17"
+    },
+    {
+        "cardCode":"01IO033T1",
+        "name": "Skyward Strikes",
+        "score": "40"
+    },
+    {
+        "cardCode":"01SI046",
+        "name": "Mist's Call",
+        "score": "20"
+    },
+    {
+        "cardCode":"01FR038T1",
+        "name": "Ashe's Flash Freeze",
+        "score": "19"
+    },
+    {
+        "cardCode":"01DE026",
+        "name": "Single Combat",
+        "score": "15"
+    },
+    {
+        "cardCode":"01DE026",
+        "name": "Progress Day!",
+        "score": "29"
+    },
+    {
+        "cardCode":"01IO004",
+        "name": "Health Potion",
+        "score": "12"
+    },
+    {
+        "cardCode":"01DE027",
+        "name": "En Garde",
+        "score": "22"
+    },
+    {
+        "cardCode":"01IO049",
+        "name": "Deny",
+        "score": "55"
+    },
+    {
+        "cardCode":"01PZ016",
+        "name": "Flash of Brilliance",
+        "score": "20"
+    },
+    {
+        "cardCode":"01IO054",
+        "name": "Insight of Ages",
+        "score": "25"
+    },
+    {
+        "cardCode":"01FR001",
+        "name": "Flash Freeze",
+        "score": "19"
+    },
+    {
+        "cardCode":"01FR001",
+        "name": "Steel Tempest",
+        "score": "18"
+    },
+    {
+        "cardCode":"01PZ026",
+        "name": "Sumpworks Map",
+        "score": "12"
+    },
+    {
+        "cardCode":"01FR051",
+        "name": "Tall Tales",
+        "score": "10"
+    },
+    {
+        "cardCode":"01IO041T2",
+        "name": "Karma's Insight of Ages",
+        "score": "25"
+    },
+    {
+        "cardCode":"01IO039",
+        "name": "Shadowshift",
+        "score": "25"
+    },
+    {
+        "cardCode":"01SI040",
+        "name": "Vile Feast",
+        "score": "22"
+    },
+    {
+        "cardCode":"01DE044",
+        "name": "Redoubled Valor",
+        "score": "27"
+    },
+    {
+        "cardCode":"01NX049",
+        "name": "Guile",
+        "score": "15"
+    },
+    {
+        "cardCode":"01SI047",
+        "name": "Fading Memories",
+        "score": "12"
     }
 
 ]
