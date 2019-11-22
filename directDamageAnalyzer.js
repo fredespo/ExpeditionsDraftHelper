@@ -118,7 +118,7 @@ function getValueOfDmgToTargetCopies(target, currDmgValue) {
 }
 
 var calcFunctionsByTargetCondition = {
-    "if it has 0 power": function(currDmgStatVal) {return currDmgStatVal / 2},
+    "it has 0 power": function(currDmgStatVal) {return currDmgStatVal / 2},
 };
 
 function getAdjustedValForTargetCondition(target, currDmgStatVal) {
@@ -129,12 +129,12 @@ function getAdjustedValForTargetCondition(target, currDmgStatVal) {
         adjustedVal = currDmgStatVal;
     }
     else {
-        var targetCondition = matches[1];
-        if(calcFunctionsByTargetCondition[matches[1]] == undefined) {
+        var targetCondition = matches[1].toLowerCase();
+        if(calcFunctionsByTargetCondition[targetCondition] == undefined) {
             logger.log("Error: No calc function found for target condition '" + targetCondition + "'");
         }
         else {
-            adjustedVal = calcFunctionsByTargetCondition[matches[1]](currDmgStatVal);
+            adjustedVal = calcFunctionsByTargetCondition[targetCondition](currDmgStatVal);
         }
     }
     return adjustedVal;
@@ -177,7 +177,7 @@ function getDmgMultiplier(dmgStats) {
         multiplierDesc = targetMatches[1];
     }
     else if(conditionMatches != null) {
-        multiplierDesc = conditionMatches[1];
+        multiplierDesc = conditionMatches[1].toLowerCase();
     }
 
     if(multiplierDesc != null) {
