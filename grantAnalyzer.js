@@ -27,7 +27,8 @@ var calcFunctionsByTarget = {
     "another ally": function(totalStatValue) {return totalStatValue},
     "other battling allies": function(totalStatValue) {return totalStatValue * 2.5},
     "an ally and all other allies of its group": function(totalStatValue) {return totalStatValue * 8},
-    "another ally": function(totalStatValue) {return totalStatValue}
+    "another ally": function(totalStatValue) {return totalStatValue},
+    "an ally +3|+0 or": function(totalStatValue) {return totalStatValue}
 };
 
 function getGrantValue(card) {

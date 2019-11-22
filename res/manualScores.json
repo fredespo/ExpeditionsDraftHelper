@@ -488,5 +488,30 @@
         "cardCode":"01NX052",
         "name": "Blood for Blood",
         "score": "25"
+    },
+    {
+        "cardCode":"01PZ060",
+        "name": "Accelerated Purrsuit",
+        "score": "30"
+    },
+    {
+        "cardCode":"01SI028",
+        "name": "Splinter Soul",
+        "score": "15"
+    },
+    {
+        "cardCode":"01PZ022",
+        "name": "Poison Puffcap",
+        "score": "1"
+    },
+    {
+        "cardCode":"01PZ049",
+        "name": "Progress Day!",
+        "score": "37"
+    },
+    {
+        "cardCode":"01IO046",
+        "name": "Steel Tempest",
+        "score": "23"
     }
 ]
