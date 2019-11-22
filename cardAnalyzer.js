@@ -7,6 +7,13 @@ function setBaseValueIfNotSet(card) {
     if(card.baseValue == undefined) {
         card.baseValue = calcBaseValue(card);
     }
+
+    if(card.baseValue == undefined) {
+        logger.log("Base value calc error!");
+    }
+    else {
+        logger.log("base value = " + card.baseValue);
+    }
 }
 
 function calcBaseValue(card) {
