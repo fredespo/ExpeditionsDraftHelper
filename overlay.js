@@ -26,10 +26,6 @@ document.onreadystatechange = () => {
 function createCardCache() {
     jsonDataDragon.forEach(card => cardCache[card.cardCode] = card);
     manualScores.forEach(scoredCard => cardCache[scoredCard.cardCode].baseValue = scoredCard.score);
-    logger.log('created card cache');
-    //testing that the two cards were initialized with scores
-    //logger.log(cardCache['01FR004'].baseValue);
-    //logger.log(cardCache['01IO012T2'].baseValue);
 }
 
 function runOverlayWindow() {
@@ -37,7 +33,6 @@ function runOverlayWindow() {
         if(isOverlayEnabled() && isLorActive()) {
             overlayWindow.setPosition(lorWindow.xPos, lorWindow.yPos);
             overlayWindow.setSize(lorWindow.width, lorWindow.height);
-            logger.log('getting expedition state');
             getExpeditionsState(cardCache);
         }
         else {
@@ -49,14 +44,11 @@ function runOverlayWindow() {
 function getPositionalRectangles(cardCache){
     var request = new XMLHttpRequest();
     var call = 'http://localhost:' + 21337 + '/positional-rectangles';
-    logger.log(call);
     request.open('GET', call, true);
     request.onload = function() {
-        logger.log(request.status);
         var res = request.responseText;
         var json = JSON.parse(res);
         var gameState = json.GameState;
-        logger.log(gameState);
 
         var rectangles = json.Rectangles;
         eraseCardValues();
@@ -66,9 +58,6 @@ function getPositionalRectangles(cardCache){
             var cardCode = rect.CardCode;
             var x = rect.TopLeftX;
             var y = overlayHeight - rect.TopLeftY;
-            logger.log('cardCode= ' + cardCode);
-            logger.log('x= ' + x);
-            logger.log('y= ' + y);
 
             //call function to create overlay at these points
             //use cardcode and x/y coordinates to position
@@ -110,10 +99,8 @@ function eraseCardValues() {
 }
 
 function findCardValue(cardCode, cardCache){
-    logger.log('trying to find card value');
     card = cardCache[cardCode];
     
-    logger.log(card.name);
     cardAnalyzer.setBaseValueIfNotSet(card);
     return card.baseValue;
 }
@@ -123,18 +110,13 @@ function findCardValue(cardCode, cardCache){
 function getExpeditionsState(cardCache){
     var request = new XMLHttpRequest();
     var call = 'http://localhost:' + 21337 + '/expeditions-state';
-    logger.log(call);
     request.open('GET', call, true);
     request.onload = function() {
-        logger.log(request.status);
         var res = request.responseText;
         var json = JSON.parse(res);
         var isActive = json.IsActive;
         var state = json.State;
         var deck = json.Deck;
-        logger.log(json);
-        logger.log('state: ' + state);
-        logger.log('isActive: ' + isActive);
         if (isActive == true && (state == 'Picking' || state == 'Swapping')){
             getPositionalRectangles(cardCache);
             overlayWindow.setOpacity(1);
@@ -149,15 +131,12 @@ function getExpeditionsState(cardCache){
 
 function isOverlayEnabled() {
     var overlayEnabled = localStorage.getItem('overlayEnabled');
-    logger.log("overlayEnabled = " + overlayEnabled);
     return overlayEnabled == 'true';
 }
 
 function isLorActive() {
     var topWindowInfo = windowInfo.getTopWindowInfo().split(";");
-    logger.log("topWindowInfo = " + topWindowInfo);
     if(topWindowInfo[0] == "Legends of Runeterra") {
-        logger.log("LoR detected!");
         lorWindow.xPos = parseInt(topWindowInfo[1]);
         lorWindow.yPos = parseInt(topWindowInfo[2]);
         lorWindow.width = parseInt(topWindowInfo[3]);
