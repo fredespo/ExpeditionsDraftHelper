@@ -1,12 +1,173 @@
 [
     {
-        "cardCode":"01FR004",
-        "name": "Elixer of Iron",
+        "cardCode":"01IO012T2",
+        "name": "Discipline of Fortitude",
         "score": "15"
     },
     {
-        "cardCode":"01IO012T2",
-        "name": "Discipline of Fortitude",
-        "score": "42"
+        "cardCode":"01DE031",
+        "name": "Dawnspeakers",
+        "score": "10"
+    },
+    {
+        "cardCode":"01PZ040T3",
+        "name": "Jinx's Get Excited!",
+        "score": "35"
+    },
+    {
+        "cardCode":"01NX007",
+        "name": "Glacial Storm",
+        "score": "50"
+    },
+    {
+        "cardCode":"01FR039T1",
+        "name": "Tryndamere's Battle Fury",
+        "score": "65"
+    },
+    {
+        "cardCode":"01DE019",
+        "name": "Mobilize",
+        "score": "5"
+    },
+    {
+        "cardCode":"01NX004",
+        "name": "Culling Strike",
+        "score": "75"
+    },
+    {
+        "cardCode":"01DE042T1",
+        "name": "Lux's Prismatic Barrier",
+        "score": "20"
+    },
+    {
+        "cardCode":"01FR006",
+        "name": "Iceborn Legacy",
+        "score": "3"
+    },
+    {
+        "cardCode":"01IO022",
+        "name": "Ghost",
+        "score": "10"
+    },
+    {
+        "cardCode":"01FR042",
+        "name": "Harsh Winds",
+        "score": "30"
+    },
+    {
+        "cardCode":"01SI049",
+        "name": "Glimpse Beyond",
+        "score": "20"
+    },
+    {
+        "cardCode":"01SI053T1",
+        "name": "Elise's Crawling Sensation",
+        "score": "15"
+    },
+    {
+        "cardCode":"01DE017",
+        "name": "Stand Alone",
+        "score": "30"
+    },
+    {
+        "cardCode":"01NX013",
+        "name": "Decisive Maneuver",
+        "score": "45"
+    },
+    {
+        "cardCode":"01PZ040T2",
+        "name": "Super Mega Death Rocket!",
+        "score": "68"
+    },
+    {
+        "cardCode":"01DE021",
+        "name": "Relentless Pursuit",
+        "score": "12"
+    },
+    {
+        "cardCode":"01NX047",
+        "name": "Transfusion",
+        "score": "8"
+    },
+    {
+        "cardCode":"01SI010",
+        "name": "Onslaught of Shadows",
+        "score": "25"
+    },
+    {
+        "cardCode":"01DE022T2",
+        "name": "Lucian's Relentless Pursuit",
+        "score": "12"
+    },
+    {
+        "cardCode":"01PZ028",
+        "name": "Kudos Productions",
+        "score": "7"
+    },
+    {
+        "cardCode":"01DE025",
+        "name": "Detain",
+        "score": "39"
+    },
+    {
+        "cardCode":"01FR055",
+        "name": "Shatter",
+        "score": "11"
+    },
+    {
+        "cardCode":"01FR038T3",
+        "name": "Crystal Arrow",
+        "score": "8"
+    },
+    {
+        "cardCode":"01PZ050",
+        "name": "Rising Spell Force",
+        "score": "28"
+    },
+    {
+        "cardCode":"01NX025",
+        "name": "Brothers' Bond",
+        "score": "35"
+    },
+    {
+        "cardCode":"01DE007",
+        "name": "Judgment",
+        "score": "80"
+    },
+    {
+        "cardCode":"01PZ008T1",
+        "name": "Teemo's Mushroom Cloud",
+        "score": "3"
+    },
+    {
+        "cardCode":"01FR029",
+        "name": "Entreat",
+        "score": "25"
+    },
+    {
+        "cardCode":"01IO029",
+        "name": "Sown Seeds",
+        "score": "11"
+    },
+    {
+        "cardCode":"01IO003",
+        "name": "Death Mark",
+        "score": "21"
+    },
+    {
+        "cardCode":"01IO047",
+        "name": "Shadow Flare",
+        "score": "3"
+    },
+    {
+        "cardCode":"01FR012",
+        "name": "Catalyst of Aeons",
+        "score": "5"
+    },
+    {
+        "cardCode":"01PZ010",
+        "name": "Mushroom Cloud",
+        "score": "11"
     }
+
 ]
