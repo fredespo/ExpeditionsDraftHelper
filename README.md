@@ -1,6 +1,7 @@
 # ExpeditionsDraftHelper
 
 Made for the Legends of Runeterra 2019 Developer Challenge host by Riot Games: https://www.riotgames.com/en/DevRel/legends-of-runeterra-developer-challenge-announcement
+
 Project to help players make decisions on what cards to draft during expedition draft.
 
 To compile the project simply download/pull the project.
